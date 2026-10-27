@@ -1,0 +1,141 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Book Catalogue</title>
+<link rel="stylesheet" href="style.css">
+
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f5c18f;
+            text-align: center;
+        }
+
+        img {
+            width: 90px;
+            height: 110px;
+            object-fit: contain;
+        }
+
+        button {
+            cursor: pointer;
+            padding: 7px;
+        }
+    </style>
+</head>
+
+<body>
+
+<h2 align="center">Book Catalogue</h2>
+
+<table>
+    <tr>
+        <th>Book Cover</th>
+        <th>Book Details</th>
+        <th>Price</th>
+        <th>Add to Cart</th>
+    </tr>
+
+    <tr>
+        <td><img src="xml.jpg" alt="XML Bible"></td>
+        <td>
+            <b>Book:</b> XML Bible<br>
+            <b>Author:</b> Winston<br>
+            <b>Publication:</b> Wiley
+        </td>
+        <td>$40.5</td>
+        <td>
+            <button onclick="addToCart('XML Bible', 40.5)">
+                Add to Cart
+            </button>
+        </td>
+    </tr>
+
+    <tr>
+        <td><img src="ai.jpg" alt="AI"></td>
+        <td>
+            <b>Book:</b> AI<br>
+            <b>Author:</b> S. Russell<br>
+            <b>Publication:</b> Prentice Hall
+        </td>
+        <td>$63</td>
+        <td>
+            <button onclick="addToCart('AI', 63)">
+                Add to Cart
+            </button>
+        </td>
+    </tr>
+
+    <tr>
+        <td><img src="java.jpg" alt="Java 2"></td>
+        <td>
+            <b>Book:</b> Java 2<br>
+            <b>Author:</b> Watson<br>
+            <b>Publication:</b> BPB Publications
+        </td>
+        <td>$35.5</td>
+        <td>
+            <button onclick="addToCart('Java 2', 35.5)">
+                Add to Cart
+            </button>
+        </td>
+    </tr>
+
+    <tr>
+        <td><img src="html.jpg" alt="HTML in 24 Hours"></td>
+        <td>
+            <b>Book:</b> HTML in 24 Hours<br>
+            <b>Author:</b> Sam Peter<br>
+            <b>Publication:</b> Sams Publication
+        </td>
+        <td>$50</td>
+        <td>
+            <button onclick="addToCart('HTML in 24 Hours', 50)">
+                Add to Cart
+            </button>
+        </td>
+    </tr>
+</table>
+
+<p>
+    <a href="cart.html" target="rightFrame">View Cart</a>
+</p>
+
+<script>
+    function addToCart(name, price) {
+
+        let cart = JSON.parse(
+            localStorage.getItem("bookCart") || "[]"
+        );
+
+        let book = cart.find(item => item.name === name);
+
+        if (book) {
+            book.quantity++;
+        } else {
+            cart.push({
+                name: name,
+                price: price,
+                quantity: 1
+            });
+        }
+
+        localStorage.setItem("bookCart", JSON.stringify(cart));
+
+        alert(name + " added to cart!");
+    }
+</script>
+
+</body>
+</html>

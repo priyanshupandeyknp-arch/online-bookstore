@@ -1,0 +1,166 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Shopping Cart</title>
+<link rel="stylesheet" href="style.css">
+
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 10px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #f5c18f;
+        }
+
+        .total {
+            font-weight: bold;
+        }
+
+        button {
+            padding: 6px 12px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+<h2 align="center">Shopping Cart</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Book Name</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Amount</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+
+    <tbody id="cartItems">
+    </tbody>
+
+    <tfoot>
+        <tr>
+            <td colspan="3" class="total">Total Amount</td>
+            <td id="totalAmount" class="total">$0</td>
+            <td></td>
+        </tr>
+    </tfoot>
+</table>
+
+<br>
+
+<button onclick="clearCart()">Clear Cart</button>
+
+<p>
+    <a href="catalogue.html" target="rightFrame">
+        Continue Shopping
+    </a>
+</p>
+
+<script>
+    function displayCart() {
+
+        let cart = JSON.parse(
+            localStorage.getItem("bookCart") || "[]"
+        );
+
+        let table = document.getElementById("cartItems");
+        let total = 0;
+
+        table.innerHTML = "";
+
+        cart.forEach(function(book, index) {
+
+            let amount = book.price * book.quantity;
+            total += amount;
+
+            let row = `
+                <tr>
+                    <td>${book.name}</td>
+                    <td>$${book.price}</td>
+                    <td>
+                        <button onclick="changeQuantity(${index}, -1)">
+                            -
+                        </button>
+
+                        ${book.quantity}
+
+                        <button onclick="changeQuantity(${index}, 1)">
+                            +
+                        </button>
+                    </td>
+                    <td>$${amount.toFixed(2)}</td>
+                    <td>
+                        <button onclick="removeBook(${index})">
+                            Remove
+                        </button>
+                    </td>
+                </tr>
+            `;
+
+            table.innerHTML += row;
+        });
+
+        document.getElementById("totalAmount").textContent =
+            "$" + total.toFixed(2);
+
+        if (cart.length === 0) {
+            table.innerHTML =
+                '<tr><td colspan="5">Your cart is empty.</td></tr>';
+        }
+    }
+
+    function changeQuantity(index, change) {
+
+        let cart = JSON.parse(
+            localStorage.getItem("bookCart") || "[]"
+        );
+
+        cart[index].quantity += change;
+
+        if (cart[index].quantity <= 0) {
+            cart.splice(index, 1);
+        }
+
+        localStorage.setItem("bookCart", JSON.stringify(cart));
+
+        displayCart();
+    }
+
+    function removeBook(index) {
+
+        let cart = JSON.parse(
+            localStorage.getItem("bookCart") || "[]"
+        );
+
+        cart.splice(index, 1);
+
+        localStorage.setItem("bookCart", JSON.stringify(cart));
+
+        displayCart();
+    }
+
+    function clearCart() {
+
+        localStorage.removeItem("bookCart");
+
+        displayCart();
+    }
+
+    displayCart();
+</script>
+
+</body>
+</html>

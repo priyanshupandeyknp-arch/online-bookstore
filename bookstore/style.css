@@ -1,0 +1,256 @@
+
+/* ===== GLOBAL STYLES ===== */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 15px;
+    background-color: #f4f8fd;
+    color: #26364a;
+}
+
+h1, h2, h3 {
+    color: #123d73;
+}
+
+a {
+    color: #123d73;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+a:hover {
+    color: #f28c28;
+    text-decoration: underline;
+}
+
+
+/* ===== HEADER AND NAVIGATION ===== */
+
+.header-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+}
+
+.header-table td {
+    border: 1px solid #d5e2f0;
+    padding: 10px;
+}
+
+.logo {
+    width: 18%;
+    text-align: center;
+    background-color: white;
+}
+
+.logo img {
+    width: 110px;
+    height: 65px;
+    object-fit: contain;
+}
+
+.site-title {
+    text-align: center;
+    background-color: #123d73;
+    color: white;
+}
+
+.site-title h2 {
+    color: white;
+    margin: 12px;
+    letter-spacing: 1px;
+}
+
+.navigation {
+    background-color: #eaf2fb;
+    text-align: center;
+    padding: 12px;
+}
+
+.navigation a {
+    margin: 0 10px;
+}
+
+
+/* ===== LEFT SIDEBAR ===== */
+
+.sidebar {
+    background-color: #123d73;
+    color: white;
+    padding: 15px;
+    min-height: 100vh;
+}
+
+.sidebar h3 {
+    color: white;
+    text-align: center;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #f28c28;
+}
+
+.sidebar a {
+    display: block;
+    color: white;
+    padding: 12px;
+    border-radius: 5px;
+}
+
+.sidebar a:hover {
+    background-color: #f28c28;
+    color: #123d73;
+    text-decoration: none;
+}
+
+
+/* ===== HOME PAGE ===== */
+
+.welcome {
+    max-width: 650px;
+    margin: 25px auto;
+    padding: 30px;
+    background-color: white;
+    border-top: 5px solid #f28c28;
+    border-radius: 10px;
+    text-align: center;
+    line-height: 1.8;
+}
+
+
+/* ===== TABLES AND CATALOGUE ===== */
+
+table {
+    border-collapse: collapse;
+}
+
+.catalogue-table,
+.cart-table {
+    width: 100%;
+    background-color: white;
+}
+
+.catalogue-table th,
+.cart-table th {
+    background-color: #123d73;
+    color: white;
+    padding: 12px;
+}
+
+.catalogue-table td,
+.cart-table td {
+    border: 1px solid #d5e2f0;
+    padding: 10px;
+}
+
+.catalogue-table tr:nth-child(even),
+.cart-table tr:nth-child(even) {
+    background-color: #eaf2fb;
+}
+
+.catalogue-table img {
+    width: 90px;
+    height: 110px;
+    object-fit: contain;
+}
+
+
+/* ===== FORMS ===== */
+
+.form-table {
+    margin: auto;
+    border-spacing: 10px;
+}
+
+input,
+select,
+textarea {
+    font-family: Arial, sans-serif;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+textarea {
+    max-width: 100%;
+    padding: 8px;
+    border: 1px solid #bdcde0;
+    border-radius: 4px;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    outline: 2px solid #8bb8ed;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+    accent-color: #123d73;
+}
+
+
+/* ===== BUTTONS ===== */
+
+button,
+input[type="submit"],
+input[type="button"] {
+    background-color: #123d73;
+    color: white;
+    border: none;
+    padding: 9px 14px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover,
+input[type="submit"]:hover,
+input[type="button"]:hover {
+    background-color: #24599a;
+}
+
+input[type="reset"] {
+    background-color: #f28c28;
+    color: white;
+    border: none;
+    padding: 9px 14px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+input[type="reset"]:hover {
+    background-color: #d96d12;
+}
+
+
+/* ===== CART TOTAL ===== */
+
+.total {
+    font-weight: bold;
+    color: #123d73;
+}
+
+
+/* ===== RESPONSIVE STYLES ===== */
+
+@media (max-width: 600px) {
+    body {
+        padding: 8px;
+    }
+
+    .navigation a {
+        display: inline-block;
+        margin: 6px;
+    }
+
+    .catalogue-table th,
+    .catalogue-table td,
+    .cart-table th,
+    .cart-table td {
+        padding: 5px;
+        font-size: 12px;
+    }
+}
